@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(RestaurantController::class)
+    ->name('.restaurants')
+    ->prefix('restaurants')
+    ->group(function () {
+        Route::get('/restaurants', 'index')->name('index');
+        Route::get('/restaurants/create', 'create')->name('create');    
+});
+
+
+// Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
+// Route::get('/restaurants/create', [RestaurantController::class, 'create'])->name('restaurants.create');
