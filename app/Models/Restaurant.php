@@ -26,20 +26,20 @@ class Restaurant extends Model
     /* accessor e mutator no Laravel 9.x */
 
     public function name(): Attribute { // 'name():' é o nome da propriedade no banco de dados
-        return new Attribute(
+        return Attribute::make(
 
             // Accessor
             get: fn($value) => strtoupper($value), // retorna tudo em maiúsculo // obs: o 'get:' é opcional
             
             // Mutator
-            set: fn($value) => $value . ' Ok laravel 9.x' // obs: o 'set:' é opcional
+            set: fn($value) => $value . ' - Ok1 laravel 9.x' // obs: o 'set:' é opcional
         );
     }
 
     public function description(): Attribute {
-        return new Attribute(
-            get: fn($value) => strtoupper($value),
-            set: fn($value) => $value . ' Ok laravel 9.x'
+        return Attribute::make(
+            get: fn ($value) => strtoupper($value),
+            set: fn ($value) => $value . ' - Ok2 laravel 9.x'
         );
     }
 }
