@@ -42,4 +42,8 @@ class Restaurant extends Model
             set: fn ($value) => $value . ' - Ok2 laravel 9.x'
         );
     }
+
+    public function menus() {
+        return $this->hasMany(Menu::class);
+    }
 }
