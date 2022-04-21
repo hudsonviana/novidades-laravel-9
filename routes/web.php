@@ -1,9 +1,12 @@
 <?php
 
+use App\Enums\OrderStatus;
 use App\Http\Controllers\RestaurantController;
 use App\Models\{
     Menu,
-    Restaurant
+    Order,
+    Restaurant,
+    User
 };
 use App\View\Components\RestaurantList;
 use Illuminate\Support\Facades\Blade;
@@ -32,5 +35,23 @@ Route::get('/restaurants/{restaurant}/menus/{menu}', function (Restaurant $resta
 
 Route::get('/blade', fn () => Blade::render('Olá, {{ $name }}', ['name' => 'Hudson Andrade Viana']));
 
-
 Route::get('/blade-component', fn () => Blade::renderComponent(new RestaurantList(new Restaurant()))); 
+
+Route::get('orders', function() {
+    // $user = User::first();
+    // return $user->orders()->create([
+    //     'items' => ['item' => 'teste mais item'],
+    //     'status' => 'in_delivery'
+    // ]);
+    
+    $order = Order::find(5);
+    dd($order->status);
+    // return $order->status;
+});
+
+Route::get('orders/list/{status}', function(OrderStatus $status) {
+    // dd($status);
+    $orders = Order::whereStatus($status)->get();
+    dd($orders);
+});
+
