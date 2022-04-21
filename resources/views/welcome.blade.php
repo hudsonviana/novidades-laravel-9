@@ -36,6 +36,15 @@
                 </div>
             @endif
 
+            <div class="w-full block">
+                <x-restaurant-list>
+                    {{-- outra forma de declarar a variável por meio do shortcut Laravel 9--}}
+                    <x-slot:title>Restaurantes</x-slot>
+                    {{-- <x-slot name="title">Restaurantes</x-slot> --}}
+                    Conteúdo ok {{-- o conteúdo que não é nomeado vai para a variável $slot por default --}}
+                </x-restaurant-list>
+            </div>
+
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
